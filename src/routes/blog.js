@@ -1,5 +1,6 @@
 import { h, Component } from "preact";
 import { Link } from "preact-router/match";
+import snarkdown from "snarkdown";
 
 const PostContainer = props =>
   <div>
@@ -8,9 +9,7 @@ const PostContainer = props =>
         {props.title}
       </h1>
     </Link>
-    <p>
-      {props.snippet}
-    </p>
+    <div dangerouslySetInnerHTML={{ __html: snarkdown(props.snippet) }} />
   </div>;
 
 export default class Blog extends Component {
