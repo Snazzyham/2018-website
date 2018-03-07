@@ -1,5 +1,5 @@
 import { h, Component } from "preact";
-
+import snarkdown from "snarkdown";
 export default class Post extends Component {
   state = {};
 
@@ -25,9 +25,10 @@ export default class Post extends Component {
           <h1>
             {post.title}
           </h1>
-          <p>
-            {post.content}
-          </p>
+          <div
+            class="lh-copy"
+            dangerouslySetInnerHTML={{ __html: snarkdown(post.content) }}
+          />
         </div>
       );
     }
